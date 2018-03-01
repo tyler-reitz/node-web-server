@@ -1,6 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 
+const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(express.static(__dirname + '/public'))
@@ -19,9 +20,9 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use((req, res, next) => {
-  res.render('maintenanc.hbs')
-})
+// app.use((req, res, next) => {
+//   res.render('maintenanc.hbs')
+// })
 
 app.get('/', (req, res) => { 
   res.send({
@@ -39,4 +40,4 @@ app.get('/about', (req, res) => {
   })
 })
 
-app.listen(3000, () => 'listening on port 3000')
+app.listen(PORT, () => `listening on port ${PORT}`)
